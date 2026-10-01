@@ -9,4 +9,4 @@ iOS 앱 "BUNNY WALK WIDGET"(DBNB STUDIO)의 App Store 등록용 공개 페이지
 
 ## app-ads.txt
 
-`app-ads.txt`는 AdMob 광고 판매자 인증 파일입니다. 이 저장소(GitHub Pages 하위 경로)에서는 인식되지 않으므로, 개발자 웹사이트 도메인 루트(`https://dbnbstudio.com/app-ads.txt`)에 그대로 올려야 합니다.
+`app-ads.txt`는 AdMob 광고 판매자 인증 파일의 사본입니다. 실제로 쓰이는 파일은 스튜디오 사이트 루트(`https://dbnbstudio.com/app-ads.txt`, Vercel 프로젝트 `dbnb-studio-site`)에 이미 올라가 있으며, 게시자 ID 단위라 DBNB STUDIO의 모든 앱이 같이 씁니다. 이 저장소(GitHub Pages 하위 경로)에 있는 사본은 AdMob이 읽지 않습니다.
