@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>개인정보처리방침 · BUNNY WALK WIDGET</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  /* 시안 B — Liquid Glass: iOS 26 디자인 언어와 맞춘 반투명 레이어 + 오로라 배경 */
+  :root {
+    color-scheme: light dark;
+    --ink: #14151a; --muted: rgba(20,21,26,.58); --accent: #5b5bf7;
+    --glass: rgba(255,255,255,.46); --glass-strong: rgba(255,255,255,.62); --edge: rgba(255,255,255,.75);
+    --a1: #ffb8d2; --a2: #b7c4ff; --a3: #a8ecdf; --a4: #ffe3a3; --base: #eef0f8;
+  }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+    --ink: #f4f4f8; --muted: rgba(244,244,248,.62); --accent: #9d9dff;
+    --glass: rgba(40,40,56,.42); --glass-strong: rgba(48,48,66,.6); --edge: rgba(255,255,255,.16);
+    --a1: #7a2f5a; --a2: #2f3c8a; --a3: #1f5d58; --a4: #6b5420; --base: #0d0e14;
+  } }
+  * { box-sizing: border-box; }
+  body { margin: 0; color: var(--ink); background: var(--base); min-height: 100vh; word-break: keep-all;
+    font: 16px/1.7 "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif; -webkit-font-smoothing: antialiased; }
+  .aurora { position: fixed; inset: -20%; z-index: -1; filter: blur(60px) saturate(140%);
+    background:
+      radial-gradient(28% 32% at 18% 22%, var(--a1), transparent 70%),
+      radial-gradient(32% 36% at 82% 16%, var(--a2), transparent 70%),
+      radial-gradient(30% 34% at 70% 70%, var(--a3), transparent 70%),
+      radial-gradient(26% 30% at 22% 80%, var(--a4), transparent 70%), var(--base); }
+  .glass { background: var(--glass); backdrop-filter: blur(28px) saturate(180%); -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border: 1px solid var(--edge); position: relative;
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.7), inset 0 -1px 1px rgba(255,255,255,.18), 0 20px 50px -24px rgba(40,40,90,.35); }
+  .glass::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+    background: linear-gradient(135deg, rgba(255,255,255,.55), transparent 32%, transparent 70%, rgba(255,255,255,.22)); opacity: .55; }
+  .wrap { max-width: 58rem; margin: 0 auto; padding: 20px 16px 140px; }
+  .bar { display: flex; align-items: center; gap: 10px; padding: 8px 8px 8px 14px; border-radius: 999px; font-weight: 700; font-size: 15px; }
+  .bar .sp { flex: 1; }
+  .appicon { width: 30px; height: 30px; border-radius: 9px; background: linear-gradient(150deg, #fff, #ffd6e2); display: grid; place-items: center; box-shadow: 0 2px 6px rgba(0,0,0,.12); }
+  .pill { font-size: 13px; padding: 7px 14px; border-radius: 999px; background: var(--ink); color: var(--base); text-decoration: none; font-weight: 700; }
+
+  .hero { display: grid; grid-template-columns: 1.25fr 1fr; gap: 20px; align-items: center; margin: 44px 0 28px; }
+  .kicker { font-size: 13px; font-weight: 700; letter-spacing: .14em; color: var(--accent); text-transform: uppercase; }
+  h1 { font-size: clamp(34px, 6.4vw, 58px); line-height: 1.08; letter-spacing: -.045em; margin: 10px 0 14px; font-weight: 800; }
+  h1 em { font-style: normal; background: linear-gradient(90deg, #ff5f9e, #6d6bff 60%, #2fc2a6); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .lead { color: var(--muted); margin: 0; font-size: 17px; }
+
+  .widget { border-radius: 34px; padding: 22px; aspect-ratio: 1 / 1; max-width: 300px; justify-self: end; width: 100%; display: flex; flex-direction: column; }
+  .widget .top { display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; color: var(--muted); }
+  .widget .steps { font-size: 54px; font-weight: 800; letter-spacing: -.05em; line-height: 1; margin-top: auto; }
+  .widget .unit { font-size: 15px; font-weight: 600; color: var(--muted); }
+  .ring { position: absolute; right: 18px; top: 46px; width: 112px; height: 112px; }
+  .track { margin-top: 12px; height: 8px; border-radius: 9px; background: rgba(120,120,160,.2); overflow: hidden; }
+  .track i { display: block; height: 100%; width: 84%; border-radius: 9px; background: linear-gradient(90deg, #ff7eb0, #7a78ff); }
+
+  .chips { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 28px; }
+  .chip { border-radius: 22px; padding: 16px; }
+  .chip .sym { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--glass-strong); font-size: 17px; margin-bottom: 10px; }
+  .chip b { display: block; font-size: 15px; letter-spacing: -.01em; }
+  .chip span { font-size: 13px; color: var(--muted); line-height: 1.45; display: block; }
+
+  .doc { border-radius: 30px; padding: 8px 24px; }
+  .sec { padding: 22px 0; border-bottom: 1px solid rgba(127,127,160,.18); display: grid; grid-template-columns: 44px 1fr; gap: 6px 14px; }
+  .sec:last-child { border-bottom: 0; }
+  .sec .no { font: 700 13px/1 ui-monospace, "SF Mono", Menlo, monospace; color: var(--accent); padding-top: 6px; }
+  .sec h2 { font-size: 19px; letter-spacing: -.02em; margin: 0; line-height: 1.4; }
+  .sec .tx { grid-column: 2; color: var(--ink); opacity: .86; }
+  .sec p { margin: 4px 0 8px; } .sec ul { margin: 4px 0; padding-left: 1.1rem; } .sec li { margin: 4px 0; }
+  a { color: var(--accent); }
+  .sec.fold h2::after { content: " ›"; color: var(--muted); }
+
+  .dock { position: fixed; left: 50%; bottom: max(18px, env(safe-area-inset-bottom)); transform: translateX(-50%); display: flex; gap: 4px; padding: 6px; border-radius: 999px; z-index: 10; }
+  .dock a { display: flex; flex-direction: column; align-items: center; gap: 1px; min-width: 76px; padding: 7px 12px; border-radius: 999px; font-size: 11px; font-weight: 700; color: var(--muted); text-decoration: none; }
+  .dock a b { font-size: 19px; line-height: 1.2; }
+  .dock a[aria-current] { background: var(--glass-strong); color: var(--accent); box-shadow: inset 0 1px 1px rgba(255,255,255,.8); }
+  footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 28px; }
+
+  @media (max-width: 720px) {
+    .hero { grid-template-columns: 1fr; margin-top: 30px; }
+    .widget { justify-self: stretch; max-width: none; aspect-ratio: 2.1 / 1; border-radius: 28px; }
+    .widget .steps { font-size: 44px; }
+    .ring { width: 92px; height: 92px; top: auto; bottom: 34px; }
+    .chips { grid-template-columns: 1fr 1fr; }
+    .doc { padding: 4px 18px; }
+    .sec { grid-template-columns: 1fr; } .sec .tx { grid-column: 1; } .sec .no { padding-top: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="aurora" aria-hidden="true"></div>
+<div class="wrap">
+  <div class="bar glass">
+    <span class="appicon"><svg width="22" height="24" viewBox="0 0 40 44"><ellipse cx="14" cy="11" rx="4.5" ry="11" fill="#fff" stroke="#f3b6c6" stroke-width="1.5"/><ellipse cx="26" cy="11" rx="4.5" ry="11" fill="#fff" stroke="#f3b6c6" stroke-width="1.5"/><circle cx="20" cy="29" r="13" fill="#fff" stroke="#f3b6c6" stroke-width="1.5"/><circle cx="15.5" cy="28" r="1.8" fill="#14151a"/><circle cx="24.5" cy="28" r="1.8" fill="#14151a"/><ellipse cx="20" cy="32.5" rx="1.6" ry="1.1" fill="#ff8fa8"/></svg></span>
+    BUNNY WALK WIDGET<span class="sp"></span><a class="pill" href="#">App Store</a>
+  </div>
+
+  <header class="hero">
+    <div>
+      <div class="kicker">Privacy Policy</div>
+      <h1>걸음은 <em>폰 안에서만</em><br>반짝여요</h1>
+      <p class="lead">계정도, 서버도 없어요. Apple 건강 앱의 걸음 수를 읽기만 하고, 위젯으로 예쁘게 보여주는 게 전부예요.</p>
+    </div>
+    <div class="widget glass" aria-label="위젯 예시">
+      <div class="top"><span>🐰 오늘의 걸음</span><span>10:42</span></div>
+      <svg class="ring" viewBox="0 0 120 120" aria-hidden="true"><defs><linearGradient id="rg" x1="0" x2="1"><stop offset="0" stop-color="#ff7eb0"/><stop offset="1" stop-color="#7a78ff"/></linearGradient></defs>
+        <circle cx="60" cy="60" r="48" fill="none" stroke="rgba(120,120,160,.2)" stroke-width="12"/>
+        <circle cx="60" cy="60" r="48" fill="none" stroke="url(#rg)" stroke-width="12" stroke-linecap="round" stroke-dasharray="301.6" stroke-dashoffset="48" transform="rotate(-90 60 60)"/>
+        <text x="60" y="68" text-anchor="middle" font-size="26">🐰</text></svg>
+      <div class="steps">8,432<span class="unit"> 걸음</span></div>
+      <div class="track"><i></i></div>
+    </div>
+  </header>
+
+  <section class="chips">
+    <div class="chip glass"><div class="sym">🔒</div><b>서버 전송 없음</b><span>판매·공유도 하지 않아요</span></div>
+    <div class="chip glass"><div class="sym">👟</div><b>읽기 전용</b><span>걸음 수·거리·출처</span></div>
+    <div class="chip glass"><div class="sym">🪪</div><b>계정 없음</b><span>회원가입·동기화 없음</span></div>
+    <div class="chip glass"><div class="sym">🚫</div><b>위젯 광고 없음</b><span>건강 데이터 타게팅 ✕</span></div>
+  </section>
+
+  <main class="doc glass">
+    <section class="sec"><span class="no">01</span><h2>개인정보 처리 목적</h2><div class="tx">
+      <p>오늘의 총 걸음 수와 앱·기기별 기록을 보여주고, 사용자가 고른 디자인의 홈 화면 위젯을 제공하기 위해 허용된 건강 데이터를 처리합니다. 앱은 계정 생성, 회원 프로필, 서버 동기화 기능을 제공하지 않습니다.</p></div></section>
+    <section class="sec"><span class="no">02</span><h2>처리하는 정보</h2><div class="tx">
+      <p>Apple HealthKit에서 사용자가 허용한 범위 안에서 읽기 전용으로 처리합니다.</p>
+      <ul><li>걸음 수: 오늘의 총 걸음 수와 앱·기기별 출처 기록</li><li>걷기·달리기 거리: 위젯 보조 정보로 선택한 경우</li><li>데이터 출처: 걸음 수를 기록한 앱·기기 이름</li></ul></div></section>
+    <section class="sec"><span class="no">03</span><h2>저장 및 보관</h2><div class="tx">
+      <p>HealthKit 원본은 Apple Health에 남아 있으며 외부 서버에 복사하지 않습니다. 앱을 삭제하면 로컬 캐시도 함께 삭제됩니다.</p></div></section>
+    <section class="sec fold"><span class="no">04</span><h2>제3자 제공 및 외부 전송</h2></section>
+    <section class="sec fold"><span class="no">05</span><h2>광고 및 추적</h2></section>
+    <section class="sec fold"><span class="no">06</span><h2>동의 철회 및 권리 행사</h2></section>
+  </main>
+  <footer>© 2026 DBNB STUDIO · <a href="mailto:contact@dbnbstudio.com">contact@dbnbstudio.com</a></footer>
+</div>
+<nav class="dock glass">
+  <a href="#" aria-current="page"><b>🛡️</b>개인정보</a>
+  <a href="#"><b>💬</b>지원</a>
+  <a href="mailto:contact@dbnbstudio.com"><b>✉️</b>문의</a>
+</nav>
+</body>
+</html>
